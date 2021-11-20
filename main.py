@@ -11,11 +11,15 @@ def get_user_input():
         try:  # testing user input
             stock_symbol = input('Enter the Stock Symbol you are looking for: ')
             stock_symbol = stock_symbol.upper()
+            for char in stock_symbol: #testing if user input is not alpha character
+                check = char.isalpha()
+                if not check:
+                    raise Exception
             if stock_symbol == "":  # testing if user input is null
                 print('Stock Symbol Example: GOOGL')    # input example due to null input
                 raise Exception
-            if len(stock_symbol) > 7:
-                print('Stock Symbol must not exceed 7 characters...:')
+            if len(stock_symbol) > 7 or len(stock_symbol) < 1:
+                print('Stock Symbol must be 1-7 characters...:')
                 print('Stock Symbol Example: GOOGL')
                 raise Exception
         except Exception:  # catching errors
